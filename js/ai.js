@@ -1,12 +1,8 @@
 console.log('yo yo yo')
 
 	// options for voice recognition
-	document.addEventListener('onkeyup',
-	function(e){
-
-		if(e.which != 32){
-			return false
-		}
+	document.getElementById('button').addEventListener('click',
+	function(){
 		console.log('click');
 		
 	var recognition = new webkitSpeechRecognition();

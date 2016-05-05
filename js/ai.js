@@ -1,7 +1,7 @@
-console.log('yo yo yo')
+console.log('yo yo yo');
 
 var speakText;
-var textBox = document.getElementById('inText')
+var textBox = document.getElementById('inText');
 
 	// options for voice recognition
 	document.getElementById('button').addEventListener('click',
@@ -12,7 +12,7 @@ var textBox = document.getElementById('inText')
 		recognition.continuous = true;
 		recognition.interimResults = true;
 		recognition.onresult = function(event) { 
-			speakText = event.results[0][0].transcript
+			speakText = event.results[0][0].transcript;
   		console.log(speakText);
   		appendTextBox(speakText);
 
@@ -28,20 +28,20 @@ var textBox = document.getElementById('inText')
 function takeInput(e) {
 	//e.which == 13 -> ENTER
  if(e.which != 13){
-	return false
+	return false;
 }
 	var question = this.value;
 	appendOutput("<p class='us'><b>User &raquo;</b>" + question + "</p>", out);
 	appendOutput("<p class='hal'><b>Bot &raquo;</b>" + processInput(question) + "</p>", out);
 	appendOutput("<hr/>", out);
-	talkBack(answer)
+	talkBack(answer);
 	
 
 	this.focus();
 	this.select();
 
 	// out.scrollTop(+100);
-};
+}
 
 var answer = "I'm sorry Dave, I'm afraid I can't do that";
 
@@ -55,7 +55,7 @@ function processInput(question) {
 	if(dictionary[question.toUpperCase()]){
 		var randKey = parseInt(Math.random() * dictionary[question.toUpperCase()].length);
 		answer = dictionary[question.toUpperCase()][randKey];
-		console.log(randKey)
+		console.log(randKey);
 	}
 	return answer;
 }
@@ -67,8 +67,8 @@ function processInput(question) {
 	var msg = new SpeechSynthesisUtterance();
 	msg.voiceURI = 'Google UK English Male';
 	msg.volume = 1;
-	msg.rate = .8;
-	msg.pitch = .1;
+	msg.rate = 0.8;
+	msg.pitch = 0.1;
 	msg.text = message;
 	msg.lang = 'en-GB';
 	msg.onend = function(e) {
@@ -81,7 +81,7 @@ function processInput(question) {
 		console.log('finished in ' + event.elapsedTime + 'seconds');
 	};
 	speechSynthesis.speak(msg);
-};
+}
 
 //displays output
 //@param message string Message to be displayed
@@ -89,10 +89,10 @@ function processInput(question) {
 function appendOutput(message, dest) {
 	dest.innerHTML += message;
 
-};
+}
 
 function appendTextBox(speech){
-	textBox.innerHTML = speech;
+	textBox.value = speech;
 }
 
 
@@ -107,5 +107,4 @@ $(document).ready(function(){
 	// startVoiceRecog();
 	input.focus();
 	input.select();
-})
-
+});

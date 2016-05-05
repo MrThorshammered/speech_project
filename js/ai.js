@@ -1,6 +1,7 @@
 console.log('yo yo yo')
 
 var speakText;
+var textBox = document.getElementById('inText')
 
 	// options for voice recognition
 	document.getElementById('button').addEventListener('click',
@@ -12,8 +13,10 @@ var speakText;
 		recognition.interimResults = true;
 		recognition.onresult = function(event) { 
 			speakText = event.results[0][0].transcript
-  		console.log(event.results[0][0].transcript);
-  		document.getElementById('inText').innerHTML(speakText)
+  		console.log(speakText);
+  		appendTextBox(speakText);
+
+  		// document.getElementById('inText').innerHTML(speakText)
 		};
 		recognition.start();
 });
@@ -87,6 +90,10 @@ function appendOutput(message, dest) {
 	dest.innerHTML += message;
 
 };
+
+function appendTextBox(speech){
+	textBox.innerHTML = speech;
+}
 
 
 //init code

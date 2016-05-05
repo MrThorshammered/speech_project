@@ -1,5 +1,7 @@
 console.log('yo yo yo')
 
+var speakText;
+
 	// options for voice recognition
 	document.getElementById('button').addEventListener('click',
 	function(){
@@ -9,7 +11,9 @@ console.log('yo yo yo')
 		recognition.continuous = true;
 		recognition.interimResults = true;
 		recognition.onresult = function(event) { 
+			speakText = event.results[0][0].transcript
   		console.log(event.results[0][0].transcript);
+  		document.getElementById('inText').innerHTML(speakText)
 		};
 		recognition.start();
 });
